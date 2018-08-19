@@ -1,3 +1,4 @@
+"== Vundle configuation =="
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -27,6 +28,8 @@ Plugin 'https://github.com/tpope/vim-fugitive.git'
 " All of your Plugins must be added before the following line
 call vundle#end()
 filetype plugin indent on
+
+"== Vundle configuation =="
 
 set title " update terminal title
 set number " show line numbers
@@ -64,14 +67,6 @@ set shiftwidth=2
 set expandtab
 set autoindent
 set smartindent
-
-autocmd filetype Makefile set noexpandtab
-
-" custom shortcuts
-let mapleader = ","
-nnoremap <Leader>n :new<CR>
-nnoremap <Leader>w :write<CR>
-nnoremap <Leader>q :quit<CR>
 
 " YCM configuration
 let g:ycm_server_python_interpreter='/usr/bin/python'
@@ -121,3 +116,26 @@ let NERDTreeShowBookmarks=1
 
 " ctrlp configuration
 let g:ctrlp_map = '<leader>c'
+
+"== Custom settings =="
+
+" do not expand tab for Makefile
+autocmd filetype Makefile set noexpandtab
+
+" custom shortcuts
+let mapleader = ","
+nnoremap <Leader>n :new<CR>
+nnoremap <Leader>w :write<CR>
+nnoremap <Leader>q :quit<CR>
+nnoremap <Leader>z ZZ
+
+" disable directional keys
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
