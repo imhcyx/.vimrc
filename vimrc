@@ -125,6 +125,7 @@ let NERDTreeShowBookmarks=1
 let g:ctrlp_map = '<leader>c'
 
 " Syntastic configuration
+
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
