@@ -18,12 +18,14 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 
 Plugin 'taglist.vim'
-Plugin 'https://github.com/universal-ctags/ctags.git'
-Plugin 'https://github.com/scrooloose/nerdtree.git'
-Plugin 'https://github.com/kien/ctrlp.vim'
-Plugin 'https://github.com/scrooloose/nerdcommenter.git'
-Plugin 'https://github.com/vim-syntastic/syntastic.git'
-Plugin 'https://github.com/tpope/vim-fugitive.git'
+Plugin 'universal-ctags/ctags'
+Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'tpope/vim-fugitive'
+
+Plugin 'tamlok/detorte'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -67,6 +69,11 @@ set shiftwidth=2
 set expandtab
 set autoindent
 set smartindent
+
+" color scheme
+colorscheme detorte
+DetorteHighContrast
+let g:detorte_theme_mode = 'dark'
 
 " YCM configuration
 let g:ycm_server_python_interpreter='/usr/bin/python'
@@ -117,12 +124,22 @@ let NERDTreeShowBookmarks=1
 " ctrlp configuration
 let g:ctrlp_map = '<leader>c'
 
+" Syntastic configuration
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 "== Custom settings =="
 
 " do not expand tab for Makefile
 autocmd filetype Makefile set noexpandtab
 
-" custom shortcuts
+" shortcuts
 let mapleader = ","
 nnoremap <Leader>n :new<CR>
 nnoremap <Leader>w :write<CR>
