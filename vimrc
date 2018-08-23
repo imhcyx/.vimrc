@@ -124,6 +124,9 @@ nnoremap <Leader>w :write<CR>
 nnoremap <Leader>q :quit<CR>
 nnoremap <Leader>z ZZ
 
+nnoremap <C-a> :noh<CR>
+nnoremap <Leader>sr :SyntasticReset<CR>
+
 " disable directional keys
 noremap <up> <nop>
 noremap <down> <nop>
