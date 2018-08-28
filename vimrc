@@ -3,6 +3,19 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+" use a specified file to disable syntax plugins
+let nosyntaxfile = ".nosyntax"
+let nosyntax = 0
+let pathlist = split($PWD, '/', 1)
+let c = len(pathlist)
+while c > 0
+  if filereadable(join(add(pathlist[:c-1], nosyntaxfile), '/'))
+    let nosyntax = 1
+    break
+  endif
+  let c -= 1
+endwhile
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -12,10 +25,24 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'Valloric/YouCompleteMe'
-" YCM configuration
-let g:ycm_server_python_interpreter='/usr/bin/python'
-let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
+if !nosyntax
+  Plugin 'Valloric/YouCompleteMe'
+  " YCM configuration
+  let g:ycm_server_python_interpreter='/usr/bin/python'
+  let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
+
+  Plugin 'vim-syntastic/syntastic'
+  " Syntastic configuration
+
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
+
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
+endif
 
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -49,18 +76,6 @@ Plugin 'kien/ctrlp.vim'
 let g:ctrlp_map = '<leader>c'
 
 "Plugin 'scrooloose/nerdcommenter'
-
-Plugin 'vim-syntastic/syntastic'
-" Syntastic configuration
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 Plugin 'tpope/vim-fugitive'
 
