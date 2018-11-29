@@ -133,12 +133,6 @@ let g:detorte_theme_mode = 'dark'
 autocmd filetype Makefile set noexpandtab
 
 " shortcuts
-let mapleader = ","
-nnoremap <Leader>n :new<CR>
-nnoremap <Leader>w :write<CR>
-nnoremap <Leader>q :quit<CR>
-nnoremap <Leader>z ZZ
-
 nnoremap <C-a> :noh<CR>
 nnoremap <Leader>sr :SyntasticReset<CR>
 
