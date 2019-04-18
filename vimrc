@@ -26,7 +26,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 if !nosyntax
-  Plugin 'Valloric/YouCompleteMe'
+  "Plugin 'Valloric/YouCompleteMe'
   " YCM configuration
   let g:ycm_server_python_interpreter='/usr/bin/python'
   let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
@@ -128,6 +128,7 @@ set smartindent
 colorscheme detorte
 DetorteHighContrast
 let g:detorte_theme_mode = 'dark'
+syntax reset " reset to work for msys2
 
 " do not expand tab for Makefile
 autocmd filetype Makefile set noexpandtab
