@@ -3,19 +3,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" use a specified file to disable syntax plugins
-let nosyntaxfile = ".nosyntax"
-let nosyntax = 0
-let pathlist = split($PWD, '/', 1)
-let c = len(pathlist)
-while c > 0
-  if filereadable(join(add(pathlist[:c-1], nosyntaxfile), '/'))
-    let nosyntax = 1
-    break
-  endif
-  let c -= 1
-endwhile
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -24,25 +11,6 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
-if !nosyntax
-  Plugin 'Valloric/YouCompleteMe'
-  " YCM configuration
-  let g:ycm_server_python_interpreter='/usr/bin/python'
-  let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
-
-  Plugin 'vim-syntastic/syntastic'
-  " Syntastic configuration
-
-  set statusline+=%#warningmsg#
-  set statusline+=%{SyntasticStatuslineFlag()}
-  set statusline+=%*
-
-  let g:syntastic_always_populate_loc_list = 1
-  let g:syntastic_auto_loc_list = 1
-  let g:syntastic_check_on_open = 1
-  let g:syntastic_check_on_wq = 0
-endif
 
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -136,33 +104,4 @@ autocmd filetype Makefile set noexpandtab
 nnoremap <C-a> :noh<CR>
 nnoremap <Leader>sr :SyntasticReset<CR>
 
-" disable directional keys
-noremap <up> <nop>
-noremap <down> <nop>
-noremap <left> <nop>
-noremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-
-" cscope configuration
-"if has("cscope")
-"  set csprg=/usr/bin/cscope
-"  set csto=1
-"  set cst
-"  set nocsverb
-"  " add any database in current directory
-"  if filereadable("cscope.out")
-"    cs add cscope.out
-"  endif
-"  set csverb
-"endif
-"nmap <C-/>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-"nmap <C-/>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-"nmap <C-/>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-"nmap <C-/>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-"nmap <C-/>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-"nmap <C-/>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-"nmap <C-/>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-"nmap <C-/>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+set mouse=a
