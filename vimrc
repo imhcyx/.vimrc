@@ -105,3 +105,4 @@ nnoremap <C-a> :noh<CR>
 nnoremap <Leader>sr :SyntasticReset<CR>
 
 set mouse=a
+set showcmd
